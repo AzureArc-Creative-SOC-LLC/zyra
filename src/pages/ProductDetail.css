@@ -7,13 +7,17 @@
   background: #faf8f4;
   color: #1a1a1a;
   min-height: 100vh;
-  padding: 120px 0 96px;
+  padding: 120px 0 0;
   font-family: var(--font-sans, 'Manrope Variable', system-ui, sans-serif);
+  display: flex;
+  flex-direction: column;
 }
 .pd-page__inner {
+  flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 5vw, 64px);
+  width: 100%;
+  padding: 0 clamp(20px, 5vw, 64px) 96px;
 }
 
 /* Breadcrumbs */
@@ -453,7 +457,10 @@
 @media (max-width: 768px) {
   .pd-page {
     padding-top: clamp(88px, 13vw, 112px);
-    padding-bottom: clamp(72px, 10vw, 96px);
+    padding-bottom: 0;
+  }
+  .pd-page__inner {
+    padding-bottom: clamp(56px, 10vw, 80px);
   }
   .pd-crumbs {
     flex-wrap: wrap;
