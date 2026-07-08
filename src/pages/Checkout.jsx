@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Check } from 'lucide-react'
 import { useCart, priceToNumber } from '../context/cart-context'
-import { promoValidate, userOrderCreate, centralOrderCreate, ApiError } from '../lib/api'
+import { promoValidate, userOrderCreate, ApiError } from '../lib/api'
 import './Cart.css'
 
 const fmt = (n) => `$${n.toFixed(2)}`
@@ -126,20 +126,20 @@ function Checkout() {
 
     const trim = (s) => (s == null ? '' : String(s).trim())
 
-    // Build the item list once. Sending as `itemsArray` (a JSON-stringified
-    // array) tells the server to use the structured items row directly and
-    // skip its `itemsText` concat path — which is what overflows a varchar
-    // column when the cart has multiple long product names.
-    const itemsPayload = items.map((it) => ({
+    // Build the line items as a real array of { name, quantity, unitPrice, sku }
+    // — one entry per cart line — so the server uses the structured items row
+    // directly.
+    const itemsArray = items.map((it) => ({
       name: trim(it.name),
-      sku: String(it.id || ''),
-      unitPrice: priceToNumber(it.price),
       quantity: Math.max(1, Number(it.qty) || 1),
+      unitPrice: priceToNumber(it.price),
+      sku: String(it.id || ''),
     }))
 
-    // Primary endpoint uses flat keys + itemsArray.
-    const primaryPayload = {
+    // Sole order-creation endpoint: POST /api/user-orders as plain JSON.
+    const payload = {
       email: trim(form.email),
+      customerName: `${trim(form.firstName)} ${trim(form.lastName)}`.trim(),
       firstName: trim(form.firstName),
       lastName: trim(form.lastName),
       phone: trim(form.phone),
@@ -147,66 +147,22 @@ function Checkout() {
       city: trim(form.city),
       postcode: trim(form.postcode),
       country: trim(form.country),
-      itemsArray: JSON.stringify(itemsPayload),
+      itemsArray,
       subtotal: Number(subtotal.toFixed(2)),
-      total: Number(total.toFixed(2)),
       discountAmount: Number(discount.toFixed(2)),
-      promoCode: applied ? applied.code : undefined,
+      total: Number(total.toFixed(2)),
+      promoCode: applied ? applied.code : null,
       promoDiscount: applied ? applied.percent : undefined,
       payment_method: 'manual',
     }
 
-    // Fallback central intake — nested body. Only used if the primary endpoint
-    // rejects.
-    const centralPayload = {
-      customer: {
-        firstName: trim(form.firstName),
-        lastName: trim(form.lastName),
-        email: trim(form.email),
-        mobile: trim(form.phone),
-      },
-      shippingAddress: {
-        line1: trim(form.address1),
-        line2: form.address2 ? trim(form.address2) : undefined,
-        city: trim(form.city),
-        postcode: trim(form.postcode),
-        country: trim(form.country),
-      },
-      promoCode: applied ? applied.code : undefined,
-      items: items.map((it) => ({
-        name: trim(it.name),
-        price: priceToNumber(it.price),
-        qty: Math.max(1, Number(it.qty) || 1),
-      })),
-      subtotal: Number(subtotal.toFixed(2)),
-      shipping: 0,
-      discount: Number(discount.toFixed(2)),
-      total: Number(total.toFixed(2)),
-    }
-
-    // Try the primary endpoint (flat + itemsArray). Fall back to the
-    // details-only central intake if that fails. Surface a friendly message
-    // if both reject with a "value too long for type character varying" error.
     let serverOrderNumber = null
-    let serverTotals = null
-    let lastErr = null
     try {
-      const res = await userOrderCreate(primaryPayload)
+      const res = await userOrderCreate(payload)
       serverOrderNumber = res && res.orderNumber
     } catch (err) {
-      lastErr = err
-      try {
-        const res = await centralOrderCreate(centralPayload)
-        serverOrderNumber = res && res.orderNumber
-        serverTotals = res && res.totals
-        lastErr = null
-      } catch (err2) {
-        lastErr = err2
-      }
-    }
-    if (lastErr) {
       setPlacing(false)
-      const raw = (lastErr && lastErr.message) || ''
+      const raw = (err && err.message) || ''
       const friendly = /too long|character varying|value too long/i.test(raw)
         ? "Something in your details is too long for our system. If it keeps happening, please contact support — we'll place the order manually."
         : raw || 'Could not place order. Please try again.'
@@ -236,11 +192,11 @@ function Checkout() {
         qty: it.qty,
         lineTotal: priceToNumber(it.price) * it.qty,
       })),
-      subtotal: (serverTotals && serverTotals.subtotal) ?? subtotal,
-      shipping_fee: (serverTotals && serverTotals.shipping) ?? 0,
-      discount: (serverTotals && serverTotals.discount) ?? discount,
+      subtotal,
+      shipping_fee: 0,
+      discount,
       promo: applied ? { code: applied.code, percent: applied.percent } : null,
-      total: (serverTotals && serverTotals.total) ?? total,
+      total,
     }
     try {
       sessionStorage.setItem('zl:lastOrder', JSON.stringify(order))

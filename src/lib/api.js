@@ -74,17 +74,9 @@ export const promoValidate = (code) =>
     body: { code },
   })
 
-/* ---------- Orders (details-only intake — no on-site payment) ---------- */
-export const centralOrderCreate = (payload) =>
-  request('/api/central/orders', {
-    method: 'POST',
-    body: payload,
-  })
-
-/* Primary order-creation endpoint. Uses the flat body shape + `itemsArray`
-   (JSON-stringified) so the server never has to build an internal
-   `itemsText` concat string — which is what overflows a varchar column
-   when the cart has multiple long product names. */
+/* ---------- Orders (details-only intake — no on-site payment) ----------
+   Sole order-creation endpoint. Flat body shape + `itemsArray` (a real
+   array of line items) so the server uses the structured items row directly. */
 export const userOrderCreate = (payload) =>
   request('/api/user-orders', {
     method: 'POST',
