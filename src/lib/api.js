@@ -1,7 +1,18 @@
 /* Central Order Management microservice — thin client.
    Base URL and endpoints per API_DOCUMENTATION.md. */
 
-const BASE = 'https://www.microservices.tech'
+const BASE = 'https://www.microservices.tech' // production
+// const BASE = 'http://localhost:5003' // TESTING — local user-order-service
+
+// zyra is a static Vite SPA, not Next.js — it has no server-side API routes
+// of its own. Order confirmation email is sent by a tiny companion server
+// (see /server) that this frontend calls after the order is created; that
+// server forwards to the shared order-confirmation email module. In
+// production this is same-origin (nginx proxies /api/send-order-confirmation
+// to the companion server); while testing it's a bare local port.
+const EMAIL_BASE = '' // production (same-origin, proxied by nginx)
+// const EMAIL_BASE = 'http://localhost:4002' // TESTING — local companion email server
+
 const TOKEN_KEY = 'zl:token'
 
 /* ---------- JWT helpers ---------- */
@@ -82,6 +93,57 @@ export const userOrderCreate = (payload) =>
     method: 'POST',
     body: payload,
   })
+
+/* ---------- Order confirmation email ----------
+   Posts to this frontend's own companion server (server/index.js), which
+   forwards to the shared order-confirmation email module. This is a
+   different origin from BASE — it never talks to the shared backend.
+
+   Built entirely from the order backend's own success response
+   (orderRes, as returned by userOrderCreate) — not from local checkout
+   form/cart state — so the email always reflects what was actually
+   persisted (items, totals, address), not what the client guessed before
+   the order was created.
+
+   Never throws: a failed send should not block the checkout success flow,
+   so failures are only logged. */
+export async function sendOrderConfirmationEmail(orderRes) {
+  try {
+    const shippingAddress = [
+      orderRes.shippingAddress,
+      orderRes.shippingCity,
+      orderRes.shippingPostcode,
+      orderRes.shippingCountry,
+    ].filter(Boolean).join(', ')
+
+    const res = await fetch(`${EMAIL_BASE}/api/send-order-confirmation`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customer: { name: orderRes.customerName, email: orderRes.customerEmail },
+        order: {
+          orderNumber: orderRes.orderNumber,
+          currency: orderRes.currency,
+          items: (orderRes.items || []).map((it) => ({
+            name: it.name,
+            quantity: it.quantity,
+            price: it.unitPrice,
+          })),
+          subtotal: orderRes.subtotal,
+          shipping: 0,
+          discount: orderRes.discountAmount,
+          total: orderRes.total,
+          shippingAddress,
+        },
+      }),
+    })
+    if (!res.ok) {
+      console.error('[api] order confirmation email failed', { status: res.status, body: await res.text() })
+    }
+  } catch (e) {
+    console.error('[api] order confirmation email request failed', e)
+  }
+}
 
 /* ---------- Auth ---------- */
 export const authRegister = (payload) =>

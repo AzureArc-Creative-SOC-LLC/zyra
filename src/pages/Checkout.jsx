@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Check } from 'lucide-react'
 import { useCart, priceToNumber } from '../context/cart-context'
-import { promoValidate, userOrderCreate, ApiError } from '../lib/api'
+import { promoValidate, userOrderCreate, sendOrderConfirmationEmail, ApiError } from '../lib/api'
 import './Cart.css'
 
 const fmt = (n) => `$${n.toFixed(2)}`
@@ -156,10 +156,9 @@ function Checkout() {
       payment_method: 'manual',
     }
 
-    let serverOrderNumber = null
+    let orderRes = null
     try {
-      const res = await userOrderCreate(payload)
-      serverOrderNumber = res && res.orderNumber
+      orderRes = await userOrderCreate(payload)
     } catch (err) {
       setPlacing(false)
       const raw = (err && err.message) || ''
@@ -169,6 +168,14 @@ function Checkout() {
       setError(friendly)
       return
     }
+    const serverOrderNumber = orderRes && orderRes.orderNumber
+
+    // Fire-and-forget: zyra's own branded confirmation email, built entirely
+    // from the order backend's own success response (orderRes) — not from
+    // local checkout state — so it reflects what was actually persisted.
+    // Never awaited into the try/catch above — a failed send shouldn't undo
+    // a successfully placed order.
+    void sendOrderConfirmationEmail(orderRes)
 
     const order = {
       id: serverOrderNumber || makeOrderId(),
