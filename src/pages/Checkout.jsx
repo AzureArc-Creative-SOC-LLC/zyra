@@ -156,7 +156,7 @@ function Checkout() {
       payment_method: 'manual',
     }
 
-    let orderRes = null
+    let orderRes
     try {
       orderRes = await userOrderCreate(payload)
     } catch (err) {
