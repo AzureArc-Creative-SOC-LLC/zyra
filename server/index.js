@@ -11,11 +11,14 @@
 // per-brand confirmation email for zyra.
 
 import express from 'express';
-// Path depth depends on where this file lives relative to /var/www/. On the
-// VPS, sites are deployed flat as /var/www/<site>/, sibling to
-// /var/www/shared-email/, so this needs exactly 2 levels up
-// (server/ -> zyra/ -> /var/www/) before descending into shared-email/.
-import { sendOrderConfirmationEmail } from '../../shared-email/order-email.js';
+// On the VPS, this site is deployed one level deeper than the site name
+// (/var/www/zyra/app/ is the project root, not /var/www/zyra/), so this
+// needs 3 levels up (server/ -> app/ -> zyra/ -> /var/www/) to reach
+// /var/www/shared-email/, not the usual 2.
+// NOTE: this makes running the server locally fail (no shared-email/ one
+// level above Dev/frontend/) — intentional, VPS-only fix; see vora's
+// route.js / vyra-health's server/index.js for the same pattern.
+import { sendOrderConfirmationEmail } from '../../../shared-email/order-email.js';
 
 const PORT = Number(process.env.PORT) || 4002;
 const BRAND_DOMAIN = process.env.BRAND_DOMAIN || 'zyrahealthcare.com';
