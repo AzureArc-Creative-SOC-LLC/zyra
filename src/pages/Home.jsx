@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import healthVideo from '../assets/images/home/health.mp4'
 import trendingVideo from '../assets/images/home/trending.mp4'
 import familyVideo from '../assets/images/home/family.mp4'
-import trendingImg from '../assets/images/hero-img-new.jpeg'
+import trendingImg from '../assets/images/hero-new1.webp'
 import './Page.css'
 
 /* Hero plays each video fully, then crossfades to the next theme.
