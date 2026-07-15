@@ -1,0 +1,13 @@
+- generic [ref=e3]:
+  - generic [ref=e4]: "[plugin:vite:import-analysis] Failed to resolve import \"../assets/images/new/home-page.webp\" from \"src/pages/Deals.jsx\". Does the file exist?"
+  - generic [ref=e5]: C:/Alluvi/my projects/git-update/zyra/src/pages/Deals.jsx:10:20
+  - generic [ref=e6]: "7 | import { products as catalogProducts } from \"./dealsProducts\"; 8 | /* ---------- Home-page media (assets/images/new) ---------- */ 9 | import heroImg from \"../assets/images/new/home-page.webp\"; | ^ 10 | import aboutImg1 from \"../assets/images/new/home-about1.webp\"; 11 | import aboutImg2 from \"../assets/images/new/home-about2.webp\";"
+  - generic [ref=e7]: at TransformPluginContext._formatLog (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:30486:39) at TransformPluginContext.error (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:30483:14) at normalizeUrl (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:27725:18) at async file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:27788:30 at async Promise.all (index 7) at async TransformPluginContext.transform (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:27756:4) at async EnvironmentPluginContainer.transform (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:30271:14) at async loadAndTransform (file:///C:/Alluvi/my%20projects/git-update/zyra/node_modules/vite/dist/node/chunks/node.js:24532:26)
+  - generic [ref=e8]:
+    - text: Click outside, press Esc key, or fix the code to dismiss.You can also disable this overlay by setting
+    - code [ref=e9]: server.hmr.overlay
+    - text: to
+    - code [ref=e10]: "false"
+    - text: in
+    - code [ref=e11]: vite.config.js
+    - text: .

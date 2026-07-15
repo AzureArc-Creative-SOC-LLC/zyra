@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(npx vite *ust height and set correct fit product image)"
+      "Bash(npx vite *ust height and set correct fit product image)",
+      "mcp__playwright__browser_press_key"
     ]
   }
 }

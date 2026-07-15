@@ -4,6 +4,34 @@
   min-height: 100vh;
 }
 
+/* Accessibility: keyboard users can jump past the header straight to content.
+   Visually hidden until focused, then anchored to the top-left over the header. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 10px 16px;
+  margin: 8px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0a0a0a;
+  font: 600 14px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transform: translateY(-150%);
+  transition: transform 0.18s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}
+
+/* Suspense fallback while a route chunk loads — reserves the viewport so the
+   incoming page doesn't shift layout (CLS-safe), stays on the app background. */
+.route-fallback {
+  min-height: 60vh;
+}
+
 .main {
   flex: 1;
   padding-top: var(--header-offset);

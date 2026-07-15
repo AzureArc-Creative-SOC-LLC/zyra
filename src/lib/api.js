@@ -94,6 +94,12 @@ export const userOrderCreate = (payload) =>
     body: payload,
   })
 
+export const userOrdersByEmail = (email) =>
+  request(`/api/user-orders/by-email?email=${encodeURIComponent(email)}`)
+
+export const userOrderGet = (orderNumber) =>
+  request(`/api/user-orders/${encodeURIComponent(orderNumber)}`)
+
 /* ---------- Order confirmation email ----------
    Posts to this frontend's own companion server (server/index.js), which
    forwards to the shared order-confirmation email module. This is a
@@ -160,3 +166,15 @@ export const authLogin = ({ email, password }) =>
 
 export const authVerify = () =>
   request('/api/auth/verify', { method: 'GET', auth: true })
+
+export const authForgotPassword = ({ email }) =>
+  request('/api/auth/forgot-password', {
+    method: 'POST',
+    body: { email },
+  })
+
+export const authResetPassword = ({ token, password }) =>
+  request('/api/auth/reset-password', {
+    method: 'POST',
+    body: { token, password },
+  })

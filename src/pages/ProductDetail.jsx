@@ -4,7 +4,12 @@ import { ArrowLeft, Check, Minus, Plus, ShoppingBag } from 'lucide-react'
 import { products, getProductById } from './dealsProducts'
 import { useCart } from '../context/cart-context'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 import './ProductDetail.css'
+
+const SITE = 'https://zyralabs.com'
+// Bundled asset paths are root-relative (/assets/…); make them absolute for schema.
+const absolute = (src) => (src && src.startsWith('/') ? `${SITE}${src}` : src)
 
 function ProductDetail() {
   const { id } = useParams()
@@ -28,6 +33,7 @@ function ProductDetail() {
   if (!product) {
     return (
       <div className="pd-page">
+        <Seo title="Product not found" path={`/product/${id}`} noindex />
         <div className="pd-page__inner pd-missing">
           <h1>Product not found</h1>
           <p>The product you’re looking for doesn’t exist or was removed.</p>
@@ -52,8 +58,47 @@ function ProductDetail() {
     window.setTimeout(() => setAdded(false), 1800)
   }
 
+  const priceValue = String(product.price).replace(/[^0-9.]/g, '')
+  const productUrl = `${SITE}/product/${product.id}`
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Product',
+        name: product.title,
+        description: product.description,
+        image: gallery.map(absolute),
+        sku: product.id,
+        brand: { '@type': 'Brand', name: 'Zyra Labs' },
+        offers: {
+          '@type': 'Offer',
+          url: productUrl,
+          priceCurrency: 'USD',
+          price: priceValue,
+          availability: 'https://schema.org/InStock',
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE}/services` },
+          { '@type': 'ListItem', position: 3, name: product.title, item: productUrl },
+        ],
+      },
+    ],
+  }
+
   return (
     <div className="pd-page">
+      <Seo
+        title={product.title}
+        path={`/product/${product.id}`}
+        type="product"
+        image={absolute(product.image)}
+        description={`${product.subtitle} — ${product.description}`.slice(0, 160)}
+        jsonLd={productJsonLd}
+      />
       <div className="pd-page__inner">
         <nav className="pd-crumbs" aria-label="Breadcrumb">
           <Link to="/">Home</Link>

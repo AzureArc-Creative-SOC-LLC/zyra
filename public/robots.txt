@@ -1,0 +1,15 @@
+# Zyra Labs — https://zyralabs.com
+User-agent: *
+Allow: /
+
+# Keep transactional / account routes out of the index
+Disallow: /cart
+Disallow: /checkout
+Disallow: /order-confirmation
+Disallow: /orders
+Disallow: /track-order
+Disallow: /signin
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://zyralabs.com/sitemap.xml

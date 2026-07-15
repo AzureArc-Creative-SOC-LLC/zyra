@@ -473,6 +473,205 @@
   }
 }
 
+/* ---------- Account chip + dropdown ---------- */
+.header__acct {
+  position: relative;
+}
+
+.header__acct-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+  font-family: inherit;
+}
+
+.header__acct-trigger:hover,
+.header__acct-trigger.is-open {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.header__acct-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--vyral-red, #E5462B), #b9351f);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex: 0 0 auto;
+}
+
+.header__acct-name {
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header__acct-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 260px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(18, 22, 22, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  z-index: 110;
+}
+
+.header__acct-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__acct-info {
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.header__acct-info-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header__acct-info-email {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header__acct-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 8px;
+}
+
+.header__acct-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  width: 100%;
+}
+
+.header__acct-item:hover,
+.header__acct-item:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+  outline: none;
+}
+
+.header__acct-item--danger {
+  color: #ff8a76;
+}
+
+.header__acct-item--danger:hover,
+.header__acct-item--danger:focus-visible {
+  background: rgba(229, 70, 43, 0.14);
+  color: #ff8a76;
+}
+
+.header__mobile-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 12px;
+  margin-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header__mobile-user-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.header__mobile-user-name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.header__mobile-user-email {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header__mobile-link--danger {
+  color: #ff8a76;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+}
+
+.header__mobile-link--danger:hover,
+.header__mobile-link--danger:focus-visible {
+  background: rgba(229, 70, 43, 0.14);
+  outline: none;
+}
+
+@media (max-width: 720px) {
+  .header__acct-name {
+    display: none;
+  }
+  .header__acct-trigger {
+    padding: 4px;
+    border-radius: 50%;
+  }
+  .header__acct-menu {
+    right: -8px;
+    min-width: 240px;
+  }
+}
+
 @media (max-width: 640px) {
   .header__megamenu {
     right: auto;

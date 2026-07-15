@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 import './ContactPage.css'
 
-import heroImg from '../assets/images/lets-start-img.jpeg'
+import heroImg from '../assets/images/004-best.webp'
 
 const Arrow = ({ size = 14 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -334,6 +335,11 @@ function ContactPage() {
 
   return (
     <div className="zl-page zl-contact" ref={rootRef}>
+      <Seo
+        title="Contact"
+        path="/contact"
+        description="Get in touch with Zyra Labs — request a certificate of analysis, ask about batch testing, or reach our team in Dubai Science Park by email or WhatsApp."
+      />
       <ContactHero />
       <Channels />
       <ContactForm />

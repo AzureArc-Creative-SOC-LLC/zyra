@@ -1,0 +1,177 @@
+- generic [ref=f8e3]:
+  - banner [ref=f8e4]:
+    - link "Zyra Labs — home" [ref=f8e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=f8e6]:
+        - generic [ref=f8e7]: Z
+        - generic [ref=f8e8]: "y"
+        - generic [ref=f8e9]: R
+        - generic [ref=f8e10]: A
+        - generic [ref=f8e11]: labs
+    - navigation [ref=f8e12]:
+      - link "Home" [ref=f8e13] [cursor=pointer]:
+        - /url: "#home"
+      - link "About" [ref=f8e14] [cursor=pointer]:
+        - /url: /about
+      - link "Shop" [ref=f8e15] [cursor=pointer]:
+        - /url: /services
+      - link "Why Us" [ref=f8e16] [cursor=pointer]:
+        - /url: "#why-us"
+      - link "Testimonial" [ref=f8e17] [cursor=pointer]:
+        - /url: "#testimonials"
+      - link "Contact" [ref=f8e18] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f8e19]:
+      - link "Sign in" [ref=f8e20] [cursor=pointer]:
+        - /url: /signin
+      - link "Cart, 0 items" [ref=f8e24] [cursor=pointer]:
+        - /url: /cart
+  - main [ref=f8e28]:
+    - generic [ref=f8e29]:
+      - generic [ref=f8e30]:
+        - navigation "Breadcrumb" [ref=f8e31]:
+          - link "Home" [ref=f8e32] [cursor=pointer]:
+            - /url: /
+          - generic [ref=f8e33]: /
+          - link "Products" [ref=f8e34] [cursor=pointer]:
+            - /url: /services
+          - generic [ref=f8e35]: /
+          - generic [ref=f8e36]: Tirzepatide 40mg
+        - generic [ref=f8e37]:
+          - generic [ref=f8e38]:
+            - img "Tirzepatide 40mg" [ref=f8e40]
+            - tablist "Product images" [ref=f8e41]:
+              - tab "Show image 1" [selected] [ref=f8e42] [cursor=pointer]
+              - tab "Show image 2" [ref=f8e43] [cursor=pointer]
+              - tab "Show image 3" [ref=f8e44] [cursor=pointer]
+              - tab "Show image 4" [ref=f8e45] [cursor=pointer]
+          - generic [ref=f8e46]:
+            - generic [ref=f8e47]: GLP-1 / GIP Dual Agonist
+            - heading "Tirzepatide 40mg" [level=1] [ref=f8e48]
+            - generic [ref=f8e49]: $179.00
+            - paragraph [ref=f8e50]: Research-grade Tirzepatide supplied at 40mg for flexible study design across metabolic and weight-related research protocols.
+            - generic [ref=f8e51]:
+              - generic "Quantity" [ref=f8e52]:
+                - button "Decrease quantity" [ref=f8e53] [cursor=pointer]
+                - generic [ref=f8e55]: "1"
+                - button "Increase quantity" [ref=f8e56] [cursor=pointer]
+              - button "Add to cart" [ref=f8e58] [cursor=pointer]
+            - generic [ref=f8e62]:
+              - generic [ref=f8e63]:
+                - term [ref=f8e64]: Injection
+                - definition [ref=f8e65]: 40mg
+              - generic [ref=f8e66]:
+                - term [ref=f8e67]: Purity
+                - definition [ref=f8e68]: ≥99%
+              - generic [ref=f8e69]:
+                - term [ref=f8e70]: Form
+                - definition [ref=f8e71]: Lyophilized powder
+              - generic [ref=f8e72]:
+                - term [ref=f8e73]: Storage
+                - definition [ref=f8e74]: −20°C long term · 2–8°C short term
+        - region [ref=f8e75]:
+          - generic [ref=f8e76]:
+            - generic [ref=f8e77]: also explore
+            - heading "Related products" [level=2] [ref=f8e78]
+          - generic [ref=f8e79]:
+            - link "BPC-157 & TB-500 40mg Recovery & Repair Blend BPC-157 & TB-500 40mg $129.00" [ref=f8e80] [cursor=pointer]:
+              - /url: /product/bpc-157-tb-500
+              - img "BPC-157 & TB-500 40mg" [ref=f8e82]
+              - generic [ref=f8e83]:
+                - generic [ref=f8e84]: Recovery & Repair Blend
+                - heading "BPC-157 & TB-500 40mg" [level=3] [ref=f8e85]
+                - generic [ref=f8e86]: $129.00
+            - link "Retatrutide 20mg Triple Agonist Research Peptide Retatrutide 20mg $129.00" [ref=f8e87] [cursor=pointer]:
+              - /url: /product/retatrutide-20
+              - img "Retatrutide 20mg" [ref=f8e89]
+              - generic [ref=f8e90]:
+                - generic [ref=f8e91]: Triple Agonist Research Peptide
+                - heading "Retatrutide 20mg" [level=3] [ref=f8e92]
+                - generic [ref=f8e93]: $129.00
+            - link "Retatrutide 40mg Triple Agonist Research Peptide Retatrutide 40mg $219.00" [ref=f8e94] [cursor=pointer]:
+              - /url: /product/retatrutide-40
+              - img "Retatrutide 40mg" [ref=f8e96]
+              - generic [ref=f8e97]:
+                - generic [ref=f8e98]: Triple Agonist Research Peptide
+                - heading "Retatrutide 40mg" [level=3] [ref=f8e99]
+                - generic [ref=f8e100]: $219.00
+      - generic "Site footer" [ref=f8e101]:
+        - generic [ref=f8e102]:
+          - generic [ref=f8e103]:
+            - generic [ref=f8e104]:
+              - link "Zyra Labs — home" [ref=f8e105] [cursor=pointer]:
+                - /url: /
+                - generic [ref=f8e106]: Z
+                - generic [ref=f8e107]: "y"
+                - generic [ref=f8e108]: R
+                - generic [ref=f8e109]: A
+                - generic [ref=f8e110]: labs
+              - paragraph [ref=f8e111]: Research-grade peptides and clinical-grade supplements — formulated, tested, and dispatched cold-chain from Dubai Science Park.
+              - generic [ref=f8e112]:
+                - heading "Join the newsletter" [level=4] [ref=f8e113]
+                - paragraph [ref=f8e114]: CoAs, batch drops, and lab notes — no more than once a month.
+                - generic [ref=f8e115]:
+                  - generic [ref=f8e116]:
+                    - textbox "Email address" [ref=f8e117]:
+                      - /placeholder: you@lab.com
+                    - button "Subscribe" [ref=f8e118] [cursor=pointer]
+                  - generic [ref=f8e119] [cursor=pointer]:
+                    - checkbox "I agree to receive lab updates and batch drops. Unsubscribe anytime." [checked] [ref=f8e120]
+                    - generic [ref=f8e121]: I agree to receive lab updates and batch drops. Unsubscribe anytime.
+            - generic [ref=f8e122]:
+              - heading "the lab" [level=4] [ref=f8e123]
+              - list [ref=f8e124]:
+                - listitem [ref=f8e125]:
+                  - link "about zyra labs" [ref=f8e126] [cursor=pointer]:
+                    - /url: /about
+                - listitem [ref=f8e127]:
+                  - link "shop peptides" [ref=f8e128] [cursor=pointer]:
+                    - /url: /services
+                - listitem [ref=f8e129]:
+                  - link "batch testing & purity" [ref=f8e130] [cursor=pointer]:
+                    - /url: /services
+                - listitem [ref=f8e131]:
+                  - link "request a CoA" [ref=f8e132] [cursor=pointer]:
+                    - /url: /contact
+            - generic [ref=f8e133]:
+              - heading "account" [level=4] [ref=f8e134]
+              - list [ref=f8e135]:
+                - listitem [ref=f8e136]:
+                  - link "sign in" [ref=f8e137] [cursor=pointer]:
+                    - /url: /signin
+                - listitem [ref=f8e138]:
+                  - link "your cart" [ref=f8e139] [cursor=pointer]:
+                    - /url: /cart
+                - listitem [ref=f8e140]:
+                  - link "contact" [ref=f8e141] [cursor=pointer]:
+                    - /url: /contact
+                - listitem [ref=f8e142]:
+                  - link "team" [ref=f8e143] [cursor=pointer]:
+                    - /url: /about
+            - generic [ref=f8e144]:
+              - heading "support" [level=4] [ref=f8e145]
+              - list [ref=f8e146]:
+                - listitem [ref=f8e147]:
+                  - link "research@zyralabs.com" [ref=f8e148] [cursor=pointer]:
+                    - /url: mailto:research@zyralabs.com
+                - listitem [ref=f8e149]:
+                  - link "sales@zyralabs.com" [ref=f8e150] [cursor=pointer]:
+                    - /url: mailto:sales@zyralabs.com
+                - listitem [ref=f8e151]:
+                  - link "whatsapp · +971 54 380 0625" [ref=f8e152] [cursor=pointer]:
+                    - /url: https://wa.me/971543800625
+                - listitem [ref=f8e153]:
+                  - link "lab 05 · dubai science park" [ref=f8e154] [cursor=pointer]:
+                    - /url: https://maps.google.com/?q=Dubai+Science+Park
+                - listitem [ref=f8e155]: sun – fri · 09:00 – 21:00 gst
+          - generic [ref=f8e156]:
+            - generic [ref=f8e157]: © 2026 Zyra Labs · all rights reserved
+            - generic [ref=f8e158]:
+              - link "Instagram" [ref=f8e159] [cursor=pointer]:
+                - /url: https://instagram.com/zyralabs
+              - link "X (Twitter)" [ref=f8e164] [cursor=pointer]:
+                - /url: https://twitter.com/zyralabs
+              - link "YouTube" [ref=f8e167] [cursor=pointer]:
+                - /url: https://youtube.com/@zyralabs
+              - link "LinkedIn" [ref=f8e171] [cursor=pointer]:
+                - /url: https://linkedin.com/company/zyralabs

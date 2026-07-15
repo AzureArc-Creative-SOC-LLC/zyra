@@ -3,23 +3,13 @@ import { Link } from 'react-router-dom'
 import healthVideo from '../assets/images/home/health.mp4'
 import trendingVideo from '../assets/images/home/trending.mp4'
 import familyVideo from '../assets/images/home/family.mp4'
-import trendingImg from '../assets/images/hero-new1.webp'
+import trendingImg from '../assets/images/new/01-HOME-PAGE-best.png'
 import './Page.css'
 
 /* Hero plays each video fully, then crossfades to the next theme.
    NOTE: 3 video files exist — "lifestyle" reuses the trending clip.
    Drop a home/lifestyle.mp4 in assets and swap the import to replace it. */
 const HERO_SLIDES = [
-  {
-    theme: 'Health',
-    video: healthVideo,
-    titleTop: 'Health',
-    titleEm: '&',
-    titleBottom: 'Wellness',
-    metaA: 'Pulse Health',
-    metaB: 'Fitness, wellbeing & mindful living',
-    tagline: 'Move well, rest well, and live each day with intention.',
-  },
   {
     theme: 'Trending',
     image: trendingImg,
@@ -29,6 +19,16 @@ const HERO_SLIDES = [
     metaA: 'Pulse Trends',
     metaB: 'What the world is watching now',
     tagline: 'The stories, clips, and moments the world is watching now.',
+  },
+  {
+    theme: 'Health',
+    video: healthVideo,
+    titleTop: 'Health',
+    titleEm: '&',
+    titleBottom: 'Wellness',
+    metaA: 'Pulse Health',
+    metaB: 'Fitness, wellbeing & mindful living',
+    tagline: 'Move well, rest well, and live each day with intention.',
   },
   {
     theme: 'Family',

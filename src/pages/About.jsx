@@ -3,18 +3,19 @@ import { Link } from 'react-router-dom'
 import Lenis from 'lenis'
 import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 import './About.css'
 
-import heroImg from '../assets/images/hero-img-new1.jpeg'
-import missionImg from '../assets/images/product-show1.jpeg'
-import storyImg from '../assets/images/product-show3.jpeg'
-import teamImg1 from '../assets/images/team/team-02.jpg'
-import teamImg2 from '../assets/images/team/team-01.jpg'
-import teamImg3 from '../assets/images/team/team-03.jpg'
-import teamImg4 from '../assets/images/team/team-04.jpg'
-import valueImg1 from '../assets/images/purity.png'
-import valueImg2 from '../assets/images/consistency.jpeg'
-import valueImg3 from '../assets/images/documentation.jpeg'
+import heroImg from '../assets/images/004-best.webp'
+import missionImg from '../assets/images/about/mission.webp'
+import storyImg from '../assets/images/about/story.webp'
+import teamImg1 from '../assets/images/about/team.webp'
+import teamImg2 from '../assets/images/about/team2.webp'
+import teamImg3 from '../assets/images/about/team3.webp'
+import teamImg4 from '../assets/images/about/team4.webp'
+import valueImg1 from '../assets/images/about/purity.webp'
+import valueImg2 from '../assets/images/about/consistency.webp'
+import valueImg3 from '../assets/images/about/documentation.webp'
 
 const Arrow = ({ size = 14 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -69,7 +70,7 @@ const Mission = () => (
           <em>engineered</em> for reproducibility.
         </h2>
         <p data-reveal>
-          We exist to remove uncertainty from bench-side research. Every vial
+          We exist to remove uncertainty from bench-side research. Every injection
           leaving our lab is synthesized under strict standard operating
           procedures, independently assayed for identity and purity, and
           cold-chain packaged for a worldwide research community that
@@ -152,7 +153,7 @@ const Values = () => {
   const values = [
     { img: valueImg1, kicker: 'purity', title: 'Verified ≥99% purity', body: 'HPLC and mass-spec confirmation on every lot. No exceptions, no averaging across batches.' },
     { img: valueImg2, kicker: 'consistency', title: 'Batch-to-batch consistency', body: 'Standard operating procedures locked at every step of synthesis, lyophilization, and fill.' },
-    { img: valueImg3, kicker: 'documentation', title: 'Full documentation', body: 'A signed CoA, HPLC trace, and endotoxin result travels with every vial that leaves the lab.' },
+    { img: valueImg3, kicker: 'documentation', title: 'Full documentation', body: 'A signed CoA, HPLC trace, and endotoxin result travels with every injection that leaves the lab.' },
   ]
   return (
     <section className="zl-values">
@@ -190,7 +191,7 @@ const Team = () => {
       <div className="zl-team__head">
         <div className="zl-team__label" data-reveal>( 04 ) team</div>
         <h2 data-reveal>The chemists <em>signing</em> your CoA.</h2>
-        <p data-reveal>A tight, senior team of research chemists and analysts. Every vial ships with the name of the person who verified its purity.</p>
+        <p data-reveal>A tight, senior team of research chemists and analysts. Every injection ships with the name of the person who verified its purity.</p>
       </div>
       <div className="zl-team__grid">
         {team.map((m, i) => (
@@ -289,6 +290,11 @@ function About() {
 
   return (
     <div className="zl-page zl-about" ref={rootRef}>
+      <Seo
+        title="About"
+        path="/about"
+        description="Meet Zyra Labs — the team, mission, and quality standards behind our research-grade peptides. Every batch is third-party tested for purity and shipped cold-chain from Dubai Science Park."
+      />
       <AboutHero />
       <Mission />
       <Story />

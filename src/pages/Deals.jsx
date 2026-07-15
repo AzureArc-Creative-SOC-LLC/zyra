@@ -2,29 +2,30 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Lenis from 'lenis'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 import '@fontsource-variable/geist'
 import './Deals.css'
 import { products as catalogProducts } from './dealsProducts'
 
-/* ---------- Trending media (assets/images/trending) ---------- */
-import heroImg from '../assets/images/hero-img-new1.jpeg'
-import aboutImg1 from '../assets/images/product-show1.jpeg'
-import aboutImg2 from '../assets/images/product-show2.jpeg'
-import aboutImg3 from '../assets/images/product-show3.jpeg'
-import aboutImg4 from '../assets/images/product-show4-new.jpeg'
-import whyImg1 from '../assets/images/purity.png'
-import whyImg2 from '../assets/images/consistency.jpeg'
-import whyImg3 from '../assets/images/secure-packaging.jpeg'
-import whyImg4 from '../assets/images/documentation.jpeg'
-import whyImg5 from '../assets/images/whatsapp-support.jpeg'
-import whyImg6 from '../assets/images/trusted.jpeg'
-import ctaBg from '../assets/images/lets-start-img.jpeg'
-import tEmily from '../assets/images/testimonial-emily.jpg'
-import tSofia from '../assets/images/testimonial-sofia.jpg'
-import tMichael from '../assets/images/testimonial-michael.jpg'
-import tAisha from '../assets/images/testimonial-aisha.jpg'
-import tJames from '../assets/images/testimonial-james.jpg'
-import tOmar from '../assets/images/testimonial-omar.jpg'
+/* ---------- Home-page media (assets/images/new) ---------- */
+import heroImg from '../assets/images/004-best.webp'
+import aboutImg1 from '../assets/images/new/home-about1.webp'
+import aboutImg2 from '../assets/images/new/home-about2.webp'
+import aboutImg3 from '../assets/images/new/home-about33.webp'
+import aboutImg4 from '../assets/images/new/home-about4.webp'
+import whyImg1 from '../assets/images/new/whyus-1.webp'
+import whyImg2 from '../assets/images/new/whyus2.webp'
+import whyImg3 from '../assets/images/new/whyus3.webp'
+import whyImg4 from '../assets/images/new/whyus4.webp'
+import whyImg5 from '../assets/images/new/whyus5.webp'
+import whyImg6 from '../assets/images/new/whyus6.webp'
+import ctaBg from '../assets/images/new/01-HOME-PAGE-best.png'
+import tEmily from '../assets/images/new/review-profile1.webp'
+import tSofia from '../assets/images/new/review-profile2.webp'
+import tMichael from '../assets/images/new/review-profile3.webp'
+import tAisha from '../assets/images/new/review-profile5.webp'
+import tJames from '../assets/images/new/review-profile11.webp'
+import tOmar from '../assets/images/new/review-profile22.webp'
 
 /* =========================================================================
    Vyral design — implemented as the Deals route.
@@ -847,6 +848,10 @@ function Deals() {
 
   return (
     <div className="vyral-page" ref={rootRef} data-screen-label="01 Marketing Site">
+      <Seo
+        path="/"
+        description="Research-grade peptides and clinical-grade supplements — third-party batch-tested for purity, CoA-documented, and dispatched cold-chain from Dubai Science Park. Explore BPC-157, tirzepatide, retatrutide and more."
+      />
       <Hero />
       <Marquee />
       <About />

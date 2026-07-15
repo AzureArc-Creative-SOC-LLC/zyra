@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import Lenis from 'lenis'
 import '@fontsource-variable/geist'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 import './ServicesPage.css'
 import { products as catalogProducts } from './dealsProducts'
 
-import heroImg from '../assets/images/hero-img-new1.jpeg'
+import heroImg from '../assets/images/004-best.webp'
 import processImg from '../assets/images/product-show2.jpeg'
 
 const Arrow = ({ size = 14 }) => (
@@ -60,7 +61,7 @@ const Process = () => {
     { n: '01', t: 'Enquire', d: 'Send a quick note over WhatsApp or the form. Tell us what you need, quantity, and any spec.' },
     { n: '02', t: 'Verify', d: 'We confirm scope, timelines, and share a quote. For custom work you get a spec sheet to sign off.' },
     { n: '03', t: 'Synthesize', d: 'The batch is synthesized under SOP, HPLC-verified, and lyophilized in a class-100 fill room.' },
-    { n: '04', t: 'Ship', d: 'Signed CoA travels with the vial. Cold-chain dispatch within 24h, live-tracked to your door.' },
+    { n: '04', t: 'Ship', d: 'Signed CoA travels with the injection. Cold-chain dispatch within 24h, live-tracked to your door.' },
   ]
   return (
     <section className="zl-process">
@@ -136,10 +137,10 @@ const Catalogue = () => (
 
 /* ---------- FAQ ---------- */
 const faqs = [
-  { q: 'Do you provide a Certificate of Analysis?', a: 'Yes — every vial ships with a signed CoA including HPLC trace, mass-spec identity confirmation, and endotoxin results. Additional reports available on request.' },
+  { q: 'Do you provide a Certificate of Analysis?', a: 'Yes — every injection ships with a signed CoA including HPLC trace, mass-spec identity confirmation, and endotoxin results. Additional reports available on request.' },
   { q: 'How long does custom synthesis take?', a: 'Typical turnaround is 3 – 6 weeks depending on sequence length, modifications, and scale. We share a firm timeline with your quote before you commit.' },
   { q: 'What countries do you ship to?', a: 'We currently ship to 42 countries under a validated 96-hour cold-chain envelope. Customs paperwork is pre-cleared where applicable.' },
-  { q: 'Is there a minimum order?', a: 'No minimum on stock peptides — single vials are available. Custom synthesis starts at 5mg. Wholesale pricing unlocks at 10 vials per SKU.' },
+  { q: 'Is there a minimum order?', a: 'No minimum on stock peptides — single injections are available. Custom synthesis starts at 5mg. Wholesale pricing unlocks at 10 injections per SKU.' },
   { q: 'Can I speak to a chemist directly?', a: 'Yes. Verified research clients get direct WhatsApp access to a bench chemist for handling, reconstitution, and study-design questions.' },
 ]
 
@@ -258,6 +259,11 @@ function ServicesPage() {
 
   return (
     <div className="zl-page zl-services" ref={rootRef}>
+      <Seo
+        title="Shop Research Peptides"
+        path="/services"
+        description="Browse Zyra Labs' catalogue of research-grade peptides and clinical supplements — BPC-157, tirzepatide, retatrutide and more. Each product ships with a certificate of analysis and full batch documentation."
+      />
       <ServicesHero />
       <Catalogue />
       <Process />

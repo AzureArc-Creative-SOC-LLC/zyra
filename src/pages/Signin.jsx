@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { authLogin, authRegister, setToken } from '../lib/api'
+import { useAuth } from '../context/auth-context'
 import './Cart.css'
 
 const GoogleIcon = () => (
@@ -14,6 +14,7 @@ const GoogleIcon = () => (
 
 function Signin() {
   const navigate = useNavigate()
+  const { login, register } = useAuth()
   const [mode, setMode] = useState('signin') // 'signin' | 'signup'
   const [form, setForm] = useState({ name: '', email: '', password: '', remember: true })
   const [status, setStatus] = useState('idle')
@@ -32,9 +33,10 @@ function Signin() {
     setStatus('working')
     setError(null)
     try {
-      const res = mode === 'signin'
-        ? await authLogin({ email: form.email, password: form.password })
-        : await authRegister({
+      if (mode === 'signin') {
+        await login({ email: form.email, password: form.password })
+      } else {
+        await register({
           name: form.name,
           email: form.email,
           password: form.password,
@@ -44,7 +46,7 @@ function Signin() {
           nationality: 'Prefer not to say',
           country_of_residence: 'Prefer not to say',
         })
-      if (res && res.token) setToken(res.token)
+      }
       setStatus('done')
       navigate('/')
     } catch (err) {
@@ -72,7 +74,7 @@ function Signin() {
             <span className="zl-auth__brand">ZYRA labs · researcher access</span>
             <p className="zl-auth__quote">
               Pharmaceutical <em>rigor,</em><br />
-              in every vial.
+              in every injection.
             </p>
             <div className="zl-auth__hero-foot">
               <span><strong>HPLC-verified</strong> · every batch, every lot.</span>
@@ -146,7 +148,7 @@ function Signin() {
                       />
                       Remember me
                     </label>
-                    <a href="#reset" onClick={(e) => e.preventDefault()}>Forgot password?</a>
+                    <Link to="/forgot-password">Forgot password?</Link>
                   </>
                 ) : (
                   <span>By continuing you agree to our terms &amp; privacy policy.</span>

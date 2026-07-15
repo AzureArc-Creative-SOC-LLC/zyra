@@ -159,7 +159,7 @@ function SiteFooter() {
             <ul>
               <li><NavLink to="/about">about zyra labs</NavLink></li>
               <li><NavLink to="/services">shop peptides</NavLink></li>
-              <li><NavLink to="/services">batch testing &amp; purity</NavLink></li>
+              <li><NavLink to="/track-order">track order</NavLink></li>
               <li><NavLink to="/contact">request a CoA</NavLink></li>
             </ul>
           </div>
@@ -168,9 +168,9 @@ function SiteFooter() {
             <h4>account</h4>
             <ul>
               <li><NavLink to="/signin">sign in</NavLink></li>
+              <li><NavLink to="/orders">my orders</NavLink></li>
               <li><NavLink to="/cart">your cart</NavLink></li>
-              <li><NavLink to="/contact">contact</NavLink></li>
-              <li><NavLink to="/about">team</NavLink></li>
+              <li><NavLink to="/track-order">track order</NavLink></li>
             </ul>
           </div>
 
