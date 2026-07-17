@@ -28,11 +28,11 @@ import glowPen from '../assets/images/alluvi/glow-glowpen.jpg'
 import glowOpen from '../assets/images/alluvi/glow-glowopen.jpg'
 import glowUv from '../assets/images/alluvi/glow-glowuv.jpg'
 
-/* NAD+ 1,000mg — TEMP placeholder images (BPC) until nad-*.jpg files are dropped in assets/alluvi/ */
-import nadFront from '../assets/images/alluvi/bpc-bpcfrontnew.jpg'
-import nadPen from '../assets/images/alluvi/bpc-bpcpen.jpg'
-import nadOpen from '../assets/images/alluvi/bpc-bpcopen.jpg'
-import nadUv from '../assets/images/alluvi/bpc-uvbpc.jpg'
+/* NAD+ 1,000mg */
+import nadFront from '../assets/images/alluvi/nad-nadfront.jpg'
+import nadPen from '../assets/images/alluvi/nad-nadpen.jpg'
+import nadOpen from '../assets/images/alluvi/nad-nadopen.jpg'
+import nadUv from '../assets/images/alluvi/nad-uvnad.jpg'
 
 export const products = [
   {
